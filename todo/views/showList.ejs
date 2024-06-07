@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400&family=Space+Grotesk:wght@300;500&display=swap"
+        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <title>All Todooos</title>
+    <link rel="stylesheet" href="index/index.css">
+</head>
+<body>
+    <main>
+        <h2>To dooooos List <span class="material-icons">&#xe241;</span>
+        </h2>
+        <form action="/todos" class="main__form" method="POST">
+            <input type="text" class="main__input" name="title" placeholder="Create a task." required>
+            <select name="category" id="" class="main__s">
+                <option value="general">general</option>
+                <option value="grocery">grocery</option>
+                <option value="shopping">shopping</option>
+                <option value="finance">finance</option>
+                <option value="homework">homework</option>
+            </select>
+            <button class="material-icons main__button">&#xe145;</button>
+        </form>
+        <% if(tasks.length!==0) { %>
+            <section class="task">
+                <% for(let task of tasks) { %>
+                    <div class="task__layout">
+                        <div class="task__check_task">
+                            <input type="checkbox" class="task__input" id=<%=task.id %>>
+                            <p>
+                                <%= task.title %>
+                            </p>
+                            <a href="" class="task__category" category="<%= task.category %>">
+                                <%= task.category %>
+                            </a>
+                        </div>
+
+                        <form action="/todos/<%=task.id%>?_method=DELETE" method="POST" class="task__button"><button><i
+                                    class="material-icons">&#xe92b;</i></button></form>
+                    </div>
+                    <% } %>
+
+            </section>
+            <% } else {%>
+                <span class="status">No pending tasks. Keep it up !!!</span>
+                <% } %>
+                    <% if(tasks.length!==0) { %>
+                        <button class="btn update-btn">Update List</button>
+                        <!-- <form action=""><button class="update-btn">Update List</button></form> -->
+                        <% } %>
+                            <a class="btn" href="/todos/history">History <i class="material-icons">&#xe5c8;</i></a>
+    </main>
+    <script src="updateList/update_list.js"></script>
+</body>
+
+</html>

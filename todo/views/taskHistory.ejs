@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400&family=Space+Grotesk:wght@300;500&display=swap"
+        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+    <title>History</title>
+    <link rel="stylesheet" href="/index/history.css">
+    <!-- <link rel="stylesheet" href="index/history.css"> -->
+
+</head>
+
+<body>
+    <main>
+        <h2>Completed Tasks <span class="material-icons">&#xe889;</span>
+        </h2>
+        <% if(tasks.length!==0) { %>
+            <section class="task">
+                <% for(let task of tasks) { %>
+                    <div class="task__layout">
+                        <div class="task__check_task">
+                            <span class="material-icons">&#xe876;</span>
+                            <p>
+                                <%= task.title %>
+                            </p>
+                            <a href="" class="task__category" category="<%= task.category %>">
+                                <%= task.category %>
+                            </a>
+                        </div>
+
+                        <form action="/todos/history/<%=task.id%>?_method=DELETE" method="POST" class="task__button"><button><i
+                                    class="material-icons">&#xe92b;</i></button></form>
+                    </div>
+                    <% } %>
+            </section>
+            <% } else {%>
+                <span class="status">No completed tasks .</span>
+                <% } %>
+                <a class="btn" href="/todos"><i class="material-icons">&#xe5c4;</i>Home</a>
+    </main>
+</body>
+
+</html>
