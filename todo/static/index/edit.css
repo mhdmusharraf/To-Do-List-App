@@ -1,3 +1,4 @@
+/* Base styles */
 body, html {
     margin: 0;
     padding: 0;
@@ -8,18 +9,15 @@ body, html {
 }
 
 main {
-    max-width: 400px;
-    margin: 100px auto; /* Updated margin */
+    max-width: 800px;
+    margin: 0 auto;
     padding: 20px;
-    text-align: center;
-    border: 1px solid #ccc;
-    border-radius: 8px;
 }
-
 
 h2 {
     font-size: 24px;
     margin-bottom: 20px;
+    text-align: center;
 }
 
 form {
@@ -28,7 +26,7 @@ form {
     gap: 10px;
 }
 
-input[type="text"], input[type="password"] {
+input[type="text"], select {
     padding: 10px;
     font-size: 16px;
     border: 1px solid #ccc;
@@ -52,17 +50,39 @@ button[type="submit"]:hover {
     background-color: #0056b3;
 }
 
-a {
+a.btn {
     display: block;
-    margin-top: 20px;
+    text-align: center;
+    padding: 10px;
+    font-size: 16px;
+    color: #fff;
+    background-color: #6c757d;
+    border-radius: 5px;
     text-decoration: none;
-    color: #007BFF;
-}
-
-a:hover {
-    text-decoration: underline;
-}
-
-p {
     margin-top: 20px;
+}
+
+a.btn i {
+    vertical-align: middle;
+    margin-right: 5px;
+}
+
+a.btn:hover {
+    background-color: #5a6268;
+}
+
+/* Responsive styles */
+@media (max-width: 600px) {
+    h2 {
+        font-size: 20px;
+    }
+
+    form {
+        gap: 8px;
+    }
+
+    input[type="text"], select, button[type="submit"], a.btn {
+        font-size: 14px;
+        padding: 8px;
+    }
 }

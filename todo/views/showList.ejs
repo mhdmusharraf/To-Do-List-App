@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -16,8 +15,7 @@
 </head>
 <body>
     <main>
-        <h2>Welcome to your ToDo List <span class="material-icons">&#xe241;</span>
-        </h2>
+        <h2>Welcome to your ToDo List <span class="material-icons">&#xe241;</span></h2>
         <form action="/todos" class="main__form" method="POST">
             <input type="text" class="main__input" name="title" placeholder="Create a task." required>
             <select name="category" id="" class="main__s">
@@ -29,36 +27,30 @@
             </select>
             <button class="material-icons main__button">&#xe145;</button>
         </form>
-        <% if(tasks.length!==0) { %>
+        <% if(tasks.length !== 0) { %>
             <section class="task">
                 <% for(let task of tasks) { %>
                     <div class="task__layout">
                         <div class="task__check_task">
-                            <input type="checkbox" class="task__input" id=<%=task.id %>>
-                            <p>
-                                <%= task.title %>
-                            </p>
-                            <a href="" class="task__category" category="<%= task.category %>">
-                                <%= task.category %>
-                            </a>
+                            <input type="checkbox" class="task__input" id="<%=task.id %>">
+                            <p><%= task.title %></p>
+                            <a href="" class="task__category" category="<%= task.category %>"><%= task.category %></a>
                         </div>
-
-                        <form action="/todos/<%=task.id%>?_method=DELETE" method="POST" class="task__button"><button><i
-                                    class="material-icons">&#xe92b;</i></button></form>
+                        <form action="/todos/<%=task.id%>?_method=DELETE" method="POST" class="task__button">
+                            <button><i class="material-icons">&#xe92b;</i></button>
+                        </form>
+                        <a href="/todos/<%=task.id%>/edit" class="task__button"><i class="material-icons">&#xe3c9;</i></a>
                     </div>
-                    <% } %>
-
-            </section>
-            <% } else {%>
-                <span class="status">No pending tasks. Keep it up !!!</span>
                 <% } %>
-                    <% if(tasks.length!==0) { %>
-                        <button class="btn update-btn">Update List</button>
-                        <!-- <form action=""><button class="update-btn">Update List</button></form> -->
-                        <% } %>
-                            <a class="btn" href="/todos/history">History <i class="material-icons">&#xe5c8;</i></a>
+            </section>
+        <% } else { %>
+            <span class="status">No pending tasks. Keep it up!!!</span>
+        <% } %>
+        <% if(tasks.length !== 0) { %>
+            <button class="btn update-btn">Update List</button>
+        <% } %>
+        <a class="btn" href="/todos/history">History <i class="material-icons">&#xe5c8;</i></a>
     </main>
     <script src="updateList/update_list.js"></script>
 </body>
-
 </html>

@@ -1,4 +1,4 @@
-/* Use the same CSS as login.css */
+/* General styles */
 body {
     font-family: 'Poppins', sans-serif;
     display: flex;
@@ -6,6 +6,7 @@ body {
     align-items: center;
     height: 100vh;
     margin: 0;
+    background-color: #f0f0f0; /* Background color */
 }
 
 main {
@@ -15,6 +16,7 @@ main {
     border: 1px solid #ccc;
     border-radius: 8px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    background-color: #fff; /* Form background color */
 }
 
 h2 {
@@ -33,6 +35,11 @@ input {
     font-size: 16px;
     border: 1px solid #ccc;
     border-radius: 4px;
+    transition: border-color 0.3s ease;
+}
+
+input:focus {
+    border-color: #007BFF;
 }
 
 button {
@@ -43,6 +50,7 @@ button {
     border: none;
     border-radius: 4px;
     cursor: pointer;
+    transition: background-color 0.3s ease;
 }
 
 button:hover {
@@ -55,8 +63,16 @@ a {
     margin-top: 20px;
     color: #007BFF;
     text-decoration: none;
+    transition: color 0.3s ease;
 }
 
 a:hover {
-    text-decoration: underline;
+    color: #0056b3;
+}
+
+/* Responsive styles */
+@media (max-width: 480px) {
+    main {
+        max-width: 300px;
+    }
 }

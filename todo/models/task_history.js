@@ -1,16 +1,14 @@
 const mongoose = require('mongoose');
+const Schema = mongoose.Schema;
 
-const todoAppSchema = new mongoose.Schema({
-    title: {
-        type: String,
-        required: true
-    },
-    category: {
-        type: String,
+const taskHistorySchema = new Schema({
+    title: String,
+    category: String,
+    userId: {
+        type: Schema.Types.ObjectId,
+        ref: 'User',
         required: true
     }
 });
 
-const task_history = mongoose.model('TaskHistory', todoAppSchema);
-
-module.exports = task_history;
+module.exports = mongoose.model('Task_History', taskHistorySchema);

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400&family=Space+Grotesk:wght@300;500&display=swap"
+        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <title>Edit Task</title>
+    <link rel="stylesheet" href="/index/edit.css">
+</head>
+<body>
+    <main>
+        <h2>Edit Task</h2>
+        <form action="/todos/<%= task.id %>?_method=PUT" method="POST" class="main__form">
+            <input type="text" name="title" value="<%= task.title %>" required>
+            <select name="category" required>
+                <option value="general" <%= task.category === 'general' ? 'selected' : '' %>>general</option>
+                <option value="grocery" <%= task.category === 'grocery' ? 'selected' : '' %>>grocery</option>
+                <option value="shopping" <%= task.category === 'shopping' ? 'selected' : '' %>>shopping</option>
+                <option value="finance" <%= task.category === 'finance' ? 'selected' : '' %>>finance</option>
+                <option value="homework" <%= task.category === 'homework' ? 'selected' : '' %>>homework</option>
+            </select>
+            <button type="submit">Update Task</button>
+        </form>
+        <a class="btn" href="/todos"><i class="material-icons">&#xe5c4;</i>Back to Tasks</a>
+    </main>
+</body>
+</html>

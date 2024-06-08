@@ -73,50 +73,59 @@ app.post('/signup', async (req, res) => {
 });
 
 app.get('/todos', requireLogin, async (req, res) => {
-    const tasks = await Task.find({});
+    const tasks = await Task.find({ userId: req.session.user_id });
     res.render('showList', { tasks });
 });
 
 app.post('/todos', requireLogin, async (req, res) => {
-    const newTask = req.body;
-    const T1 = new Task(newTask);
-    await T1.save();
+    const { title, category } = req.body;
+    const newTask = new Task({ title, category, userId: req.session.user_id });
+    await newTask.save();
     res.redirect('/todos');
 });
 
 app.delete('/todos/:id', requireLogin, async (req, res) => {
     const { id } = req.params;
-    console.log("deleted.....................");
-    const getTask = await Task.findByIdAndDelete(id);
-    console.log(getTask);
-
+    await Task.findOneAndDelete({ _id: id, userId: req.session.user_id });
     res.redirect('/todos');
 });
 
 app.post('/todos/update/:id', requireLogin, async (req, res) => {
     const { id } = req.params;
 
-    const getTask = await Task.findById(id);
+    const getTask = await Task.findOne({ _id: id, userId: req.session.user_id });
 
-    const T1 = new Task_History({ title: getTask.title, category: getTask.category });
-    await T1.save();
+    if (getTask) {
+        const T1 = new Task_History({ title: getTask.title, category: getTask.category, userId: req.session.user_id });
+        await T1.save();
 
-    await Task.findByIdAndDelete(id);
+        await Task.findOneAndDelete({ _id: id, userId: req.session.user_id });
+    }
     res.redirect('/todos');
 });
 
 app.get('/todos/history', requireLogin, async (req, res) => {
-    const tasks = await Task_History.find({});
+    const tasks = await Task_History.find({ userId: req.session.user_id });
     res.render('taskHistory', { tasks });
 });
 
 app.delete('/todos/history/:id', requireLogin, async (req, res) => {
     const { id } = req.params;
-    const getTask = await Task_History.findByIdAndDelete(id);
-    console.log("history deleted");
-    console.log(getTask);
-
+    await Task_History.findOneAndDelete({ _id: id, userId: req.session.user_id });
     res.redirect('/todos/history');
+});
+
+app.get('/todos/:id/edit', requireLogin, async (req, res) => {
+    const { id } = req.params;
+    const task = await Task.findOne({ _id: id, userId: req.session.user_id });
+    res.render('edit', { task });
+});
+
+app.put('/todos/:id', requireLogin, async (req, res) => {
+    const { id } = req.params;
+    const { title, category } = req.body;
+    await Task.findOneAndUpdate({ _id: id, userId: req.session.user_id }, { title, category });
+    res.redirect('/todos');
 });
 
 app.listen(3000, () => {

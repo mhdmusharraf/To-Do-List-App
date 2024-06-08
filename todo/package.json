@@ -94,6 +94,7 @@
         "statuses": "^2.0.1",
         "strnum": "^1.0.5",
         "supports-color": "^7.2.0",
+        "toastify-js": "^1.12.0",
         "toidentifier": "^1.0.1",
         "tr46": "^3.0.0",
         "tslib": "^2.4.1",
