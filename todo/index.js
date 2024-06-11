@@ -128,6 +128,11 @@ app.put('/todos/:id', requireLogin, async (req, res) => {
     res.redirect('/todos');
 });
 
+app.post('/logout', (req, res) => {
+    req.session.destroy();
+    res.redirect('/login');
+});
+
 app.listen(3000, () => {
     console.log("LISTENING ON PORT 3000 ...");
 });
