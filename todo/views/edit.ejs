@@ -15,7 +15,7 @@
 </head>
 <body>
     <main>
-        <h2>Edit Task</h2>
+        <h2>Edit Task <span class="material-icons">&#xe3c9;</span></h2>
         <form action="/todos/<%= task.id %>?_method=PUT" method="POST" class="main__form">
             <input type="text" name="title" value="<%= task.title %>" required>
             <select name="category" required>
