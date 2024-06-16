@@ -37,9 +37,9 @@
                             <a href="" class="task__category" category="<%= task.category %>"><%= task.category %></a>
                         </div>
                         <form action="/todos/<%=task.id%>?_method=DELETE" method="POST" class="task__button">
-                            <button><i class="material-icons">&#xe92b;</i></button>
+                            <button id="delete"><i class="material-icons">&#xe92b;</i></button>
                         </form>
-                        <a href="/todos/<%=task.id%>/edit" class="task__button"><i class="material-icons">&#xe3c9;</i></a>
+                        <a href="/todos/<%=task.id%>/edit" class="task__button" id="edit"><i class="material-icons">&#xe3c9;</i></a>
                     </div>
                 <% } %>
             </section>
