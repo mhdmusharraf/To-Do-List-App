@@ -1,5 +1,5 @@
 Want to put into the production (Heroku)
 Want to include some more features in the Task view List.
-
 Want to design task history interface with good style.
+Want to add some extra features.
 
